@@ -28,7 +28,7 @@ class Civ:
         self.buildings.append(Building("Mining Camp", {"Wood": 100}))
         self.buildings.append(Building("Lumber Camp", {"Wood": 100}))
         self.buildings.append(Building("Mill", {"Wood": 100}))
-        self.buildings.append(Building("Siege Workshop", {"Wood": 150}))
+        self.buildings.append(Building("Dock", {"Wood": 150}))
         self.buildings.append(Building("Barracks", {"Wood": 175}))
         self.buildings.append(Building("Outpost", {"Wood": 25, "Stone": 5}))
         self.buildings.append(Building("Palisade Wall", {"Wood": 5}))
@@ -55,7 +55,6 @@ class Civ:
         # Imperial Age
 
         self.buildings.append(Building("Wonder", {"Wood": 1000, "Gold": 1000, "Stone": 1000}))
-
 
     def create_teutons(self):
         ...

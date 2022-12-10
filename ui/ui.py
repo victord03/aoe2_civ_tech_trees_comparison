@@ -7,19 +7,17 @@ NL = "\n"
 
 def display_class_buildings(civilization: Civ):
 
-    text = ""
+    print()
 
     for index, each_building in enumerate(civilization.buildings):
 
-        resources_needed = list(each_building.cost.keys())
-        resource_and_cost = ""
+        cost_list = list()
+
+        for resource, cost in each_building.cost.items():
+            cost_list.append(f"{cost} {resource}")
 
         print(
-            f"{NL}{index}: {each_building.name} " + text
+            f"{index}: {each_building.name} ({', '.join(cost_list)})"
         )
 
-        for each in resources_needed:
-            resource_and_cost += str(each_building.cost[each]) + each[0]
-
-        print(resource_and_cost)
-
+    print()
