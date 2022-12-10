@@ -1,6 +1,4 @@
-class TechTree:
-
-    empty_tech_tree = {
+empty_tech_tree = {
         "Barracks": {
             "Militia": bool,
             "Man-at-Arms": bool,
@@ -156,16 +154,40 @@ class TechTree:
         },
     }
 
-    civ_tree: dict
+teutons_not_available_techs = [
+        "Eagle Scout",
+        "Eagle Warrior",
+        "Elite Eagle warrior",
+        "Arbalester",
+        "Heavy Cavalry Archer",
+        "Thumb Ring",
+        "Parthian Tactics",
+        "Light Cavalry",
+        "Hussar",
+        "Camel Rider",
+        "Heavy Camel Rider",
+        "Husbandry",
+        "Bracer",
+        "Siege Ram",
+        "Elite Cannon Galleon",
+        "Dry Dock",
+        "Shipwright",
+        "Architecture",
+        "Treadmill Crane",
+        "Gold Shaft Mining",
+    ]
 
-    def __init__(self, not_available_techs: list):
 
-        self.civ_tree = self.empty_tech_tree.copy()
+def generate_tree(not_available_techs: list) -> dict:
 
-        for key, value in self.empty_tech_tree.items():
-            for inner_key in value:
+    civ_tree = empty_tech_tree.copy()
 
-                if inner_key in not_available_techs:
-                    self.civ_tree[key][inner_key] = False
-                else:
-                    self.civ_tree[key][inner_key] = True
+    for key, value in empty_tech_tree.items():
+        for inner_key in value:
+
+            if inner_key in not_available_techs:
+                civ_tree[key][inner_key] = False
+            else:
+                civ_tree[key][inner_key] = True
+
+    return civ_tree

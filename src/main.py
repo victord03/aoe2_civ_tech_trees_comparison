@@ -1,33 +1,13 @@
-from classes.tech_tree import TechTree
+from ui import ui
+from classes.Civ import Civ
 
 
 def main():
 
-    teutons_not_available_techs = [
-        "Eagle Scout",
-        "Eagle Warrior",
-        "Elite Eagle warrior",
-        "Arbalester",
-        "Heavy Cavalry Archer",
-        "Thumb Ring",
-        "Parthian Tactics",
-        "Light Cavalry",
-        "Hussar",
-        "Camel Rider",
-        "Heavy Camel Rider",
-        "Husbandry",
-        "Bracer",
-        "Siege Ram",
-        "Elite Cannon Galleon",
-        "Dry Dock",
-        "Shipwright",
-        "Architecture",
-        "Treadmill Crane",
-        "Gold Shaft Mining",
-    ]
+    a_civ = Civ()
+    a_civ.create_civ_baseline()
 
-    Teutons = TechTree(teutons_not_available_techs)
-    print(Teutons.civ_tree.items())
+    ui.display_class_buildings(a_civ)
 
 
 if __name__ == "__main__":
