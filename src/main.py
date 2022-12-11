@@ -1,10 +1,10 @@
 from ui import ui
-from classes.Civ import Civ
+from classes.Civilization import Civilization
 
 
 def main():
 
-    a_civ = Civ()
+    a_civ = Civilization()
     a_civ.create_civ_baseline()
 
     ui.display_class_buildings(a_civ)

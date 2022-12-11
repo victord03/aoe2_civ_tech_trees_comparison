@@ -1,7 +1,7 @@
 from classes.Building import Building
 
 
-class Civ:
+class Civilization:
 
     bonus: dict[str: int]
     buildings: list[Building]

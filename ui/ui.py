@@ -1,11 +1,11 @@
-from classes.Civ import Civ
+from classes.Civilization import Civilization
 
 # display
 
 NL = "\n"
 
 
-def display_class_buildings(civilization: Civ):
+def display_class_buildings(civilization: Civilization):
 
     print()
 
