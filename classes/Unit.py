@@ -11,6 +11,7 @@ class Unit(AoeElement):
     armor: int
     pierce_armor: int
     build_time: int
+    # todo: think about requirements
 
     #### Barracks
 

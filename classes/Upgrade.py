@@ -1,7 +1,11 @@
 from classes.Aoe_element import AoeElement
-from classes.Building import Building
 from classes.Unit import Unit
-from classes.Civilization import Civilization
+# from classes.Building import Building
+# from classes.Civilization import Civilization
+
+# DEBUGGING ImportError: cannot import name 'Civilization' from partially initialized module 'classes.Civilization' (most likely due to a circular import)
+Building = ""
+Civilization = ""
 
 
 class Upgrade(AoeElement):
@@ -10,6 +14,8 @@ class Upgrade(AoeElement):
     explanation_text: str
     research_time: int
     target: list
+
+
 
     #### Barracks
     # Militia-line
@@ -364,7 +370,7 @@ class Upgrade(AoeElement):
         self.research_time = 55
         self.target = [Unit]
 
-    def research_ring_archer_rmor(self):
+    def research_ring_archer_armor(self):
         self.name = "Ring Archer Armor"
         self.cost = {"Food": 250, "Gold": 250}
         self.explanation_text = "Archers and cavalry archers have +1 normal/+2 pierce armor."
@@ -379,7 +385,7 @@ class Upgrade(AoeElement):
         self.research_time = 30
         self.target = [Unit, Building]
 
-    def research_bodkin_wrrow(self):
+    def research_bodkin_arrow(self):
         self.name = "Bodkin Arrow"
         self.cost = {"Food": 200, "Gold": 100}
         self.explanation_text = "Archers, cavalry archers, galleys, Castles, and towers have +1 attack and +1 range. Town Centers have +1 attack."

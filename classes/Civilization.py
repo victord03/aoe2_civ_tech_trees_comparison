@@ -37,7 +37,7 @@ class Civilization:
         # Feudal Age
 
         self.buildings.append(Building("Blacksmith", {"Wood": 150}))
-        self.buildings.append(Building("Blacksmith", {"Wood": 175}))
+        self.buildings.append(Building("Market", {"Wood": 175}))
         self.buildings.append(Building("Archery Range", {"Wood": 175}))
         self.buildings.append(Building("Stables", {"Wood": 175}))
         self.buildings.append(Building("Watch Tower", {"Wood": 50, "Stone": 125}))
