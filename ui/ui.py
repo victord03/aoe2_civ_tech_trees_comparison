@@ -9,8 +9,9 @@ def display_class_buildings(civilization: Civilization):
 
     print()
 
-    for index, each_building in enumerate(civilization.buildings):
-        cost_list = [f"{cost} {resource}" for resource, cost in each_building.cost.items()]
-        print(f"{index}: {each_building.name} ({', '.join(cost_list)})")
+    for index, outer_key in enumerate(civilization.buildings):
+        building_key = civilization.buildings[outer_key]
+        cost_list = [f"{cost} {resource}" for resource, cost in building_key.cost.items()]
+        print(f"{index}: {building_key.name} ({', '.join(cost_list)})")
 
     print()

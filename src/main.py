@@ -4,10 +4,16 @@ from classes.Civilization import Civilization
 
 def main():
 
-    a_civ = Civilization()
-    a_civ.create_civ_baseline()
+    teutons = Civilization()
 
-    ui.display_class_buildings(a_civ)
+    teutons.create_civilization_baseline()
+    teutons.create_teutons()
+    # ui.display_class_buildings(teutons)
+
+    for upgrade in teutons.buildings["Dock"].available_researches:
+        print(
+            upgrade
+        )
 
 
 if __name__ == "__main__":
