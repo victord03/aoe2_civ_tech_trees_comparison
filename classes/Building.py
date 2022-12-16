@@ -23,7 +23,8 @@ class Building(AoeElement):
         self.build_time = build_time
 
     def assign_available_units(self, units: dict):
-        self.available_units = units
+        # self.available_units = units
+        ...
 
     def assign_available_researches(self, researches: list):
 

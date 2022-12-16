@@ -141,3 +141,51 @@ class Civilization:
 
         self.buildings["Dock"].assign_available_researches(teutons_available_researches_dock)
 
+        teutons_available_researches_barracks = [
+            "Man-at-Arms",
+            "Long Swordsman",
+            "Two-Handed Swordsman",
+            "Champion",
+            "Pikeman",
+            "Halberdier",
+            "Supplies",
+            "Squires",
+            "Arson",
+        ]
+
+        self.buildings["Barracks"].assign_available_researches(teutons_available_researches_barracks)
+
+        teutons_available_researches_blacksmith = [
+            "Padded Archer Armor",
+            "Leather Archer Armor",
+            "Ring Archer Armor",
+            "Fletching",
+            "Bodkin Arrow",
+            "Forging",
+            "Iron Casting",
+            "Blast Furnace",
+            "Scale Barding Armor",
+            "Chain Barding Armor",
+            "Plate Barding Armor",
+            "Scale Mail Armor",
+            "Chain Mail Armor",
+            "Plate Mail Armor"
+        ]
+
+        self.buildings["Blacksmith"].assign_available_researches(teutons_available_researches_blacksmith)
+
+        teutons_available_researches_archery_range = [
+            "Crossbowman",
+            "Elite Skirmisher",
+        ]
+
+        self.buildings["Archery Range"].assign_available_researches(teutons_available_researches_archery_range)
+
+        teutons_available_researches_stable = [
+            "Cavalier",
+            "Paladin",
+            "Bloodlines"
+        ]
+
+        self.buildings["Stable"].assign_available_researches(teutons_available_researches_stable)
+
