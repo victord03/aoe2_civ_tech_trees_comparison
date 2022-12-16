@@ -5,14 +5,13 @@ from classes.Civilization import Civilization
 def main():
 
     teutons = Civilization()
-
-    teutons.create_civilization_baseline()
     teutons.create_teutons()
-    # ui.display_class_buildings(teutons)
 
-    for upgrade in teutons.buildings["Dock"].available_researches:
+    ui.display_class_buildings(teutons)
+
+    for index, upgrade in enumerate(teutons.buildings["Mill"].available_researches):
         print(
-            upgrade
+            f"{index+1}: {upgrade}"
         )
 
 

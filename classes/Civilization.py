@@ -55,10 +55,10 @@ class Civilization:
         self.buildings["Outpost"] = outpost
 
         palisade_wall = Building(name="Palisade Wall", cost={"Wood": 5}, hp=150, line_of_sight=2, build_time=7)
-        self.buildings["palisade_wall"] = palisade_wall
+        self.buildings["Palisade Wall"] = palisade_wall
 
         palisade_gate = Building(name="Palisade Gate", cost={"Wood": 30}, hp=600, line_of_sight=6, build_time=35)
-        self.buildings["palisade_gate"] = palisade_gate
+        self.buildings["Palisade Gate"] = palisade_gate
 
         # Feudal Age
 
@@ -71,8 +71,8 @@ class Civilization:
         archery_range = Building(name="Archery Range", cost={"Wood": 175}, hp=1_500, line_of_sight=6, build_time=50)
         self.buildings["Archery Range"] = archery_range
 
-        stables = Building(name="Stables", cost={"Wood": 175}, hp=1_500, line_of_sight=6, build_time=50)
-        self.buildings["Stables"] = stables
+        stable = Building(name="Stable", cost={"Wood": 175}, hp=1_500, line_of_sight=6, build_time=50)
+        self.buildings["Stable"] = stable
 
         watch_tower = Building(name="Watch Tower", cost={"Wood": 50, "Stone": 125}, hp=850, line_of_sight=10, build_time=80)
         self.buildings["Watch Tower"] = watch_tower
@@ -108,6 +108,15 @@ class Civilization:
     def create_teutons(self):
 
         self.create_civilization_baseline()
+
+        """teutons_available_researches_house = []
+        self.buildings["House"].assign_available_researches(teutons_available_researches_house)
+
+        teutons_available_researches_palisade_wall = []
+        self.buildings["Palisade Wall"].assign_available_researches(teutons_available_researches_palisade_wall)
+
+        teutons_available_researches_palisade_gate = []
+        self.buildings["Palisade Gate"].assign_available_researches(teutons_available_researches_palisade_gate)"""
 
         teutons_available_researches_lumber_camp = [
             "Double-Bit Axe",
