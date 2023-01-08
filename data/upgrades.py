@@ -1,6 +1,6 @@
+"""Contains all the upgrades / research data, emulating a local database."""
 
-
-upgrades = {
+upgrades_data = {
 
     # Barracks
     "Man-at-Arms": {

@@ -1,11 +1,16 @@
 from classes.Civilization import Civilization
 
-# Display
-
 NL = "\n"
 
 
+# Display
 def display_class_buildings(civilization: Civilization):
+    """Displays all buildings of a Civilization class.
+
+    It loops through the civlization 'buildings' attribute, and using enumerate can display an index for better
+    readability.
+
+    It finally shows the name and the cost (per resource) of each building."""
 
     print()
 

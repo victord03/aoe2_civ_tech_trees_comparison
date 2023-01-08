@@ -7,29 +7,41 @@ class Civilization:
     buildings: dict
 
     def __init__(self):
+        """Init method for the Civilization class.
+
+        Initiates the attributes bonus and buildings as empty dicts."""
         self.bonus = dict()
         self.buildings = dict()
 
     def compare_to_another_civ(self, other_civ) -> tuple:
-        this_civ_units = self.get_all_building_units()
-        other_civ_units = other_civ.get_all_building_units()
+        """Compares this Civilization instance to another one.
 
-        this_civ_upgrades = self.get_all_building_upgrades()
-        other_civ_upgrades = other_civ.get_all_building_upgrades()
+        Requires another Civilization instance passed as a parameter."""
+
+        this_civ_units = self.get_all_available_units()
+        other_civ_units = other_civ.get_all_available_units()
+
+        this_civ_upgrades = self.get_all_available_upgrades()
+        other_civ_upgrades = other_civ.get_all_available_upgrades()
 
         diff_units = set(this_civ_units) - set(other_civ_units)
         diff_upgrades = set(this_civ_upgrades) - set(other_civ_upgrades)
 
         return diff_units, diff_upgrades
 
-    def get_all_building_units(self) -> list:
+    def get_all_available_units(self) -> list:
+        """Gathers a list of all the available units for this Civ, for the purposes of comparing."""
         return list()
 
-    def get_all_building_upgrades(self) -> list:
+    def get_all_available_upgrades(self) -> list:
+        """Gathers a list of all the available upgrades for this Civ, for the purposes of comparing."""
         return list()
 
-    def create_civilization_baseline(self):
-        """ Basic buildings available to all civilizations (excluding meso civs)."""
+    def create_non_meso_civilization_building_baseline(self):
+        """Allocates buildings available to all non-meso civilizations.
+
+        Creates all buildings that are available to all the civilizations and stores them inside in the buildings
+        class attribute."""
 
         # Dark Age
 
@@ -105,18 +117,26 @@ class Civilization:
         wonder = Building(name="Wonder", cost={"Wood": 1000, "Gold": 1000, "Stone": 1000}, hp=4_800, line_of_sight=8, build_time=3_500)
         self.buildings["Wonder"] = wonder
 
+    # todo: code this
+    def create_non_meso_civilization_units_baseline(self):
+        """Allocates units available to all non-meso civilizations.
+
+        Creates all units that are available to all the civilizations and stores them inside the buildings
+        class attribute."""
+        ...
+
     def create_teutons(self):
+        """Creates the Teutons civilization.
 
-        self.create_civilization_baseline()
+        Equips all buildings with the units and researches available to that civ.
 
-        """teutons_available_researches_house = []
-        self.buildings["House"].assign_available_researches(teutons_available_researches_house)
+        Uses the civ data from data.upgrades.py, and then calls the assign_available_researches from the
+        classes.Building class and passing it the data fetched.
 
-        teutons_available_researches_palisade_wall = []
-        self.buildings["Palisade Wall"].assign_available_researches(teutons_available_researches_palisade_wall)
+        After that, calls the assign_available_units to do the same with Units."""
 
-        teutons_available_researches_palisade_gate = []
-        self.buildings["Palisade Gate"].assign_available_researches(teutons_available_researches_palisade_gate)"""
+        # BUILDINGS
+        self.create_non_meso_civilization_building_baseline()
 
         teutons_available_researches_lumber_camp = [
             "Double-Bit Axe",
@@ -198,3 +218,18 @@ class Civilization:
 
         self.buildings["Stable"].assign_available_researches(teutons_available_researches_stable)
 
+        # UNITS
+        self.create_non_meso_civilization_units_baseline()
+
+        teutons_available_barrack_units = [
+            "Militia",
+            "Man-at-Arms",
+            "Long Swordsman",
+            "Two-Handed Swordsman",
+            "Champion",
+            "Spearman",
+            "Pikeman",
+            "Halberdier",
+        ]
+
+        self.buildings["Barracks"].assign_available_units(teutons_available_barrack_units)
