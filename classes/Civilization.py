@@ -1,10 +1,12 @@
 from classes.Building import Building
+from data.units import units as unit_data
 
 
 class Civilization:
 
     bonus: dict[str: int]
     buildings: dict
+    age: str
 
     def __init__(self):
         """Init method for the Civilization class.
@@ -12,6 +14,7 @@ class Civilization:
         Initiates the attributes bonus and buildings as empty dicts."""
         self.bonus = dict()
         self.buildings = dict()
+        self.age = "Dark Age"
 
     def compare_to_another_civ(self, other_civ) -> tuple:
         """Compares this Civilization instance to another one.
@@ -117,13 +120,136 @@ class Civilization:
         wonder = Building(name="Wonder", cost={"Wood": 1000, "Gold": 1000, "Stone": 1000}, hp=4_800, line_of_sight=8, build_time=3_500)
         self.buildings["Wonder"] = wonder
 
-    # todo: code this
+    def create_non_meso_civilization_research_baseline(self):
+        """Allocates research available to all non-meso civilizations.
+
+        Creates all researches that are available to all the civilizations and stores them inside the buildings
+        class attribute."""
+
+        # Town Center
+        town_center = [
+            "Loom",
+            "Wheelbarrow",
+            "Town Watch",
+        ]
+        self.buildings["Town Center"].assign_available_researches = town_center
+
+        # Lumber Camp
+        lumber_camp = [
+            "Double-Bit Axe",
+        ]
+        self.buildings["Lumber Camp"].assign_available_researches = lumber_camp
+
+        # Mill
+        mill = [
+            "Horse Collar",
+        ]
+        self.buildings["Mill"].assign_available_researches = mill
+
+        # Mining Camp
+        mining_camp = [
+            "Gold Mining",
+            "Stone Mining",
+        ]
+        self.buildings["Mining Camp"].assign_available_researches = mining_camp
+
+        # Dock
+        dock = [
+            "Fire Ship",
+            "War Galley",
+            "Demolition Ship",
+        ]
+        self.buildings["Dock"].assign_available_researches = dock
+
+        # Blacksmith
+        blacksmith = [
+            "Padded Archer Armor",
+            "Fletching",
+            "Forging",
+            "Scale Barding Armor",
+            "Scale Mail Armor"
+        ]
+        self.buildings["Blacksmith"].assign_available_researches = blacksmith
+
+        # Market
+        market = [
+            "Coinage",
+            "Caravan",
+        ]
+        self.buildings["Market"].assign_available_researches = market
+
+        # Barracks
+        barracks = [
+            "Man-at-Arms",
+            "Long Swordsman",
+            "Two-Handed Swordsman",
+            "Pikeman",
+        ]
+        self.buildings["Barracks"].assign_available_researches = barracks
+
+        # Archery Range
+        archery_range = [
+            "Crossbowman",
+        ]
+        self.buildings["Archery Range"].assign_available_researches = archery_range
+
+        # Stable
+        stable = [
+            "Cavalier",
+        ]
+        self.buildings["Stable"].assign_available_researches = stable
+
     def create_non_meso_civilization_units_baseline(self):
         """Allocates units available to all non-meso civilizations.
 
         Creates all units that are available to all the civilizations and stores them inside the buildings
         class attribute."""
-        ...
+
+        # Town Center
+        self.buildings["Town Center"].available_units = unit_data["Villager"]
+
+        # Dock
+        self.buildings["Dock"].available_units = unit_data["Fishing Ship"]
+        self.buildings["Dock"].available_units = unit_data["Transport Ship"]
+        self.buildings["Dock"].available_units = unit_data["Trade Cog"]
+        self.buildings["Dock"].available_units = unit_data["Fish Trap"]
+        self.buildings["Dock"].available_units = unit_data["Fire Galley"]
+        self.buildings["Dock"].available_units = unit_data["Demolition Raft"]
+        self.buildings["Dock"].available_units = unit_data["Galley"]
+
+        # Market
+        self.buildings["Market"].available_units = unit_data["Trade Cart"]
+
+        # Barracks
+        self.buildings["Barracks"].available_units = unit_data["Militia"]
+        self.buildings["Barracks"].available_units = unit_data["Man-at-Arms"]
+        self.buildings["Barracks"].available_units = unit_data["Long Swordsman"]
+        self.buildings["Barracks"].available_units = unit_data["Two-Handed Swordsman"]
+        self.buildings["Barracks"].available_units = unit_data["Spearman"]
+        self.buildings["Barracks"].available_units = unit_data["Pikeman"]
+
+        # Archery Range
+        self.buildings["Archery Range"].available_units = unit_data["Archer"]
+        self.buildings["Archery Range"].available_units = unit_data["Crossbowman"]
+        self.buildings["Archery Range"].available_units = unit_data["Skirmisher"]
+        self.buildings["Archery Range"].available_units = unit_data["Cavalry Archer"]
+
+        # Stable
+        self.buildings["Stable"].available_units = unit_data["Scout Cavalry"]
+        self.buildings["Stable"].available_units = unit_data["Knight"]
+
+        # Siege Workshop
+        self.buildings["Siege Workshop"].available_units = unit_data["Battering Ram"]
+        self.buildings["Siege Workshop"].available_units = unit_data["Mangonel"]
+        self.buildings["Siege Workshop"].available_units = unit_data["Scorpion"]
+        self.buildings["Siege Workshop"].available_units = unit_data["Siege Tower"]
+
+        # Castle
+        self.buildings["Castle"].available_units = unit_data["Petard"]
+        self.buildings["Castle"].available_units = unit_data["Trebuchet"]
+
+        # Monastery
+        self.buildings["Monastery"].available_units = unit_data["Monk"]
 
     def create_teutons(self):
         """Creates the Teutons civilization.
@@ -135,11 +261,22 @@ class Civilization:
 
         After that, calls the assign_available_units to do the same with Units."""
 
-        # BUILDINGS
+        #### BUILDINGS
         self.create_non_meso_civilization_building_baseline()
 
+
+
+        #### TECHS
+        self.create_non_meso_civilization_research_baseline()
+
+        # Town Center
+        teutons_available_researches_town_center = [
+            "Hand Cart",
+            "Town Patrol",
+        ]
+        self.buildings["Town Center"].assign_available_researches(teutons_available_researches_town_center)
+
         teutons_available_researches_lumber_camp = [
-            "Double-Bit Axe",
             "Bow Saw",
             "Two-Man Saw",
         ]
@@ -147,7 +284,6 @@ class Civilization:
         self.buildings["Lumber Camp"].assign_available_researches(teutons_available_researches_lumber_camp)
 
         teutons_available_researches_mill = [
-            "Horse Collar",
             "Heavy Plow",
             "Crop Rotation",
         ]
@@ -155,9 +291,7 @@ class Civilization:
         self.buildings["Mill"].assign_available_researches(teutons_available_researches_mill)
 
         teutons_available_researches_mining_camp = [
-            "Gold Mining",
             "Gold Shaft Mining",
-            "Stone Mining",
             "Stone Shaft Mining"
         ]
 
@@ -170,12 +304,15 @@ class Civilization:
 
         self.buildings["Dock"].assign_available_researches(teutons_available_researches_dock)
 
+        # Market
+        teutons_available_researches_market = [
+            "Banking",
+            "Guilds",
+        ]
+        self.buildings["Market"].assign_available_researches(teutons_available_researches_market)
+
         teutons_available_researches_barracks = [
-            "Man-at-Arms",
-            "Long Swordsman",
-            "Two-Handed Swordsman",
             "Champion",
-            "Pikeman",
             "Halberdier",
             "Supplies",
             "Squires",
@@ -185,18 +322,13 @@ class Civilization:
         self.buildings["Barracks"].assign_available_researches(teutons_available_researches_barracks)
 
         teutons_available_researches_blacksmith = [
-            "Padded Archer Armor",
             "Leather Archer Armor",
             "Ring Archer Armor",
-            "Fletching",
             "Bodkin Arrow",
-            "Forging",
             "Iron Casting",
             "Blast Furnace",
-            "Scale Barding Armor",
             "Chain Barding Armor",
             "Plate Barding Armor",
-            "Scale Mail Armor",
             "Chain Mail Armor",
             "Plate Mail Armor"
         ]
@@ -204,32 +336,130 @@ class Civilization:
         self.buildings["Blacksmith"].assign_available_researches(teutons_available_researches_blacksmith)
 
         teutons_available_researches_archery_range = [
-            "Crossbowman",
             "Elite Skirmisher",
         ]
 
         self.buildings["Archery Range"].assign_available_researches(teutons_available_researches_archery_range)
 
         teutons_available_researches_stable = [
-            "Cavalier",
             "Paladin",
             "Bloodlines"
         ]
 
         self.buildings["Stable"].assign_available_researches(teutons_available_researches_stable)
 
-        # UNITS
+        # Siege Workshop
+        teutons_available_researches_siege_workshop = [
+            "Capped Ram",
+            "Onager",
+            "Siege Onager",
+            "Heavy Scorpion",
+        ]
+        self.buildings["Siege Workshop"].assign_available_researches(teutons_available_researches_siege_workshop)
+
+        # Dock
+        teutons_available_researches_dock = [
+            "Fire Ship",
+            "Fast Fire Ship",
+            "War Galley",
+            "Galleon",
+            "Demolition Ship",
+            "Heavy Demolition Ship",
+            "Gillnets",
+            "Careening",
+        ]
+        self.buildings["Dock"].assign_available_researches(teutons_available_researches_dock)
+
+        # Castle
+        teutons_available_researches_castle = [
+            "Elite Teutonic Knight",
+            "Ironclad",
+            "Crenellations",
+        ]
+        self.buildings["Castle"].assign_available_researches(teutons_available_researches_castle)
+
+        # Monastery
+        teutons_available_researches_monastery = [
+            "Redemption",
+            "Atonement",
+            "Herbal Medicine",
+            "Heresy",
+            "Sanctity",
+            "Fervor",
+            "Faith",
+            "Illumination",
+            "Block Printing",
+            "Theocracy",
+        ]
+        self.buildings["Monastery"].assign_available_researches(teutons_available_researches_monastery)
+
+        # University
+        teutons_available_researches_university = [
+            "Masonry",
+            "Fortified Wall",
+            "Guard Tower",
+            "Keep",
+            "Murder Holes",
+            "Ballistics",
+            "Chemistry",
+            "Siege Engineers",
+            "Arrowslits",
+            "Bombard Tower",
+            "Heated Shot"
+        ]
+        self.buildings["University"].assign_available_researches(teutons_available_researches_university)
+
+
+
+        #### UNITS
         self.create_non_meso_civilization_units_baseline()
 
+        # Dock
+        teutons_available_dock_units = [
+            "Fire Ship",
+            "Fast Fire Ship",
+            "Demolition Ship",
+            "Heavy Demolition Ship",
+            "War Galley",
+            "Galleon",
+            "Cannon Galleon",
+        ]
+        self.buildings["Dock"].assign_available_units(teutons_available_dock_units)
+
+        # Barracks
         teutons_available_barrack_units = [
-            "Militia",
-            "Man-at-Arms",
-            "Long Swordsman",
-            "Two-Handed Swordsman",
             "Champion",
-            "Spearman",
-            "Pikeman",
             "Halberdier",
         ]
-
         self.buildings["Barracks"].assign_available_units(teutons_available_barrack_units)
+
+        # Archery Range
+        teutons_available_archery_range_units = [
+            "Elite Skirmisher",
+            "Hand Cannoneer",
+        ]
+        self.buildings["Archery Range"].assign_available_units(teutons_available_archery_range_units)
+
+        # Stable
+        teutons_available_stable_units = [
+            "Paladin"
+        ]
+        self.buildings["Stable"].assign_available_units(teutons_available_stable_units)
+
+        # Siege Workshop
+        teutons_available_siege_workshop_units = [
+            "Capped Ram",
+            "Onager",
+            "Siege Onager",
+            "Heavy Scorpion",
+            "Bombard Cannon",
+            "Siege Tower"
+        ]
+        self.buildings["Siege Workshop"].assign_available_units(teutons_available_siege_workshop_units)
+
+        # Castle
+        teutons_available_castle_units = [
+            "Teutonic Knight",
+            "Elite Teutonic Knight",
+        ]
+        self.buildings["Castle"].assign_available_units(teutons_available_castle_units)
